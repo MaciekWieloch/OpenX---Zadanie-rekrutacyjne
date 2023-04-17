@@ -1,5 +1,6 @@
 import numpy as np
 import joblib
+import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 import os
@@ -16,6 +17,29 @@ X_train = joblib.load(os.path.join(project_path,'Data','Prepared data','X_train.
 X_test = joblib.load(os.path.join(project_path,'Data','Prepared data','X_test.pkl'))
 Y_train = joblib.load(os.path.join(project_path,'Data','Prepared data','Y_train.pkl'))
 Y_test = joblib.load(os.path.join(project_path,'Data','Prepared data','Y_test.pkl'))
+
+#Heuristic model
+DF = joblib.load(os.path.join(project_path,'Data','Prepared data','DF.pkl'))
+
+#Create some summary DF to look for a rule of thumb
+DF_summary = pd.DataFrame(data=np.zeros((7,56)),columns=np.append(DF.columns,"Cover_Type_weight"))
+
+DF_summary.Cover_Type = np.unique(DF.Cover_Type)
+for col in DF.columns[0:10]:
+    for tree_cov in np.unique(DF.Cover_Type):
+        DF_summary[col][tree_cov-1] = DF[col][DF["Cover_Type"]==tree_cov].mean()
+
+for col in DF.columns[10:54]:
+    for tree_cov in np.unique(DF.Cover_Type):
+        DF_summary[col][tree_cov-1] = DF[col][DF["Cover_Type"]==tree_cov].sum()
+
+for tree_cov in np.unique(DF.Cover_Type):
+    DF_summary["Cover_Type_weight"][tree_cov-1] = DF["Cover_Type"][DF["Cover_Type"]==tree_cov].count()/DF.Cover_Type.count()
+
+#The rule of thumb for heuristic will be: 1.Classify the sample elevation by assigning its elevation to the nearest mean elevation
+#Therefore save the summary DF to be loaded in REST API
+model_path = os.path.join(project_path, 'models', 'Summary_for_heuristics.pkl')
+DF_summary.to_pickle(model_path)
 
 
 

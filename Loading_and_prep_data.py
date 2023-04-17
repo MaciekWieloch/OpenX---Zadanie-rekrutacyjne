@@ -16,6 +16,10 @@ df = np.loadtxt(os.path.join(data_path,'covtype.data'), delimiter = ',')
 colnames = np.loadtxt(os.path.join(data_path,'covtype_colnames.data.txt'), delimiter=",", dtype= str)
 DF = pd.DataFrame(data=df,columns=colnames)
 
+#Save the df for further analysis
+with open(os.path.join(data_path,'Prepared data','DF.pkl'), 'wb') as f:
+    pickle.dump(DF, f)
+
 
 #Set X(independent) and Y(dependent) variables
 X = DF.iloc[:,:-1].values

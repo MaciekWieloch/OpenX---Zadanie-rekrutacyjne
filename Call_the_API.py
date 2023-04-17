@@ -12,8 +12,12 @@ import json
 
 
 # Define the input features and the selected model
-features = [3201,53,7,488,26,3667,224,225,135,4255,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0]
+features = [2335,33,29,30,4,474,201,165,83,395,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
+#'heuristic'
+#'Decision_tree_model'
+#'K_NN_model'
+#'ANN_model'
 model_name = 'ANN_model'
 
 # Define the URL of the prediction endpoint
