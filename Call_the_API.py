@@ -1,7 +1,7 @@
 import requests
 import json
 
-#Example input features
+#Example input features (please remember to cut the last value from below examples when coping to features =... (last value is the covertype, that I left in the commented examples to see if the result is correct))
 #2880,209,17,216,30,4986,206,253,179,4323,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2
 #2739,117,24,127,53,3281,253,210,71,6033,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,5
 #3201,53,7,488,26,3667,224,225,135,4255,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1
